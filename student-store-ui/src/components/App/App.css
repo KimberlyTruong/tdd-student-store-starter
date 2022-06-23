@@ -5,6 +5,7 @@
   min-height: 100vh;
   display: flex;
   flex-direction: row;
+  background-color: rgb(230, 230, 230);
 }
 .app main {
   width: 100%;
@@ -12,5 +13,29 @@
   height: 100%;
   min-height: 100vh;
   display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.left-main {
+  flex: 1;
+  margin: 0px;
+}
+
+.right-main{
+  flex: 21;
+  margin: 0px;
+}
+
+.centered-main {
+  display:flex;
+  justify-content: center;
   flex-direction: column;
+  margin-left: 14%;
+  margin-right: 14%;
+}
+
+input {
+  width: 88%;
+  border-color: rgb(182, 182, 182);
 }

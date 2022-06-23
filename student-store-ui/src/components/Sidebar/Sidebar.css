@@ -1,0 +1,48 @@
+i {
+    font-size: 42px;
+    background-color: teal;
+    color: white;
+}
+
+.sidebar {
+    color: white;
+    height: 100%;
+    width: 80px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow-x: hidden;
+    padding-top: 20px;
+    display:flex;
+    justify-content: right;
+    flex-direction: column;
+    background-color: teal;
+    border: white;
+    align-items: flex-start;
+    padding: 14px;
+    overflow-y: scroll;
+  }
+
+.inputs {
+    display: block;
+}
+
+.toggle-button {
+    background-color: teal;
+    border: white;
+}
+
+.sidebar-text-box {
+    display: flex;
+    flex-direction: column;
+}
+
+.expanded {
+    width: 400px;
+}
+
+.hidden {
+    display: none;
+}
+
+  /* On click just add or remove a class */

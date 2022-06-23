@@ -1,0 +1,20 @@
+.navbar {
+    padding: 6px 14px;
+    background-color: teal;
+    color: white;
+    font-weight: bold;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+#nav-titles {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.nav-title {
+    padding-left: 20px;
+}

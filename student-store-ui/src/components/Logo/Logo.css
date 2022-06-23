@@ -1,0 +1,32 @@
+#codePathLogo {
+    display: flex;
+    flex-direction: column;
+}
+
+.logo-image {
+    text-decoration: none;
+    display:flex;
+    justify-content: row;
+    align-items: center;
+}
+
+.codePathLogo-top {
+    color: white;
+    margin: 0px;
+    padding: 0px;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px black;
+    font-style: italic;
+}
+
+.codePathLogo-bottom {
+    color: rgb(173, 255, 234);
+    margin: 0px;
+    padding: 0px;
+    text-shadow: 2px 2px black;
+}
+
+.fa-basket-shopping{
+    font-size:22px;
+    margin-left: 5px;
+}

@@ -1,0 +1,41 @@
+.shopping-cart {
+    width: 350px;
+    margin-bottom: 50px;
+}
+
+.shopping-cart p {
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+
+.cart-item {
+    display: flex;
+    flex-direction: row;
+}
+
+.cart-product-name{
+    font-weight: bold;
+    width: 74%
+}
+
+.cart-product-quantity{
+    font-style: italic;
+    width: 26%
+}
+
+.total-price {
+    font-weight: bold;
+}
+
+.cart-row {
+    display: flex;
+    flex-direction: row;
+}
+
+.cart-row-left{
+    width: 74%;
+}
+
+.cart-row-right {
+    width: 26%;
+}
