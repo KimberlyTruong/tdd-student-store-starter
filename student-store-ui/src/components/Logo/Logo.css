@@ -8,6 +8,7 @@
     display:flex;
     justify-content: row;
     align-items: center;
+    background-color: teal;
 }
 
 .codePathLogo-top {
@@ -18,6 +19,7 @@
     text-shadow: 2px 2px black;
     font-style: italic;
 }
+
 
 .codePathLogo-bottom {
     color: rgb(173, 255, 234);

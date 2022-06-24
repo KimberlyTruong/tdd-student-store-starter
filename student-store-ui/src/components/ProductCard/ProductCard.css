@@ -47,6 +47,14 @@
     border: none;
     color: white;
     background-color: teal;
+    cursor: pointer;
+
+}
+
+.cart-button:hover {
+    box-shadow: 2px 2px rgb(0, 65, 65);
+    background-image: linear-gradient(to right, #0ba360, #3cba92, #30dd8a, #2bb673);
+    transition: all .4s ease-in-out;
 }
 
 .product-title-container {
@@ -55,7 +63,28 @@
     justify-content: space-between;
 }
 
-.product-price {
+.product-price-quantity-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
     padding: 0px;
     margin: 0px;
+}
+
+.card-fill-screen {
+    width: 100%;
+    justify-content: center;
+    height: 60vw;
+}
+
+.product-card-quantity {
+    background-color: rgba(23, 168, 108, 0.75);
+    color: white;
+    font-weight: bold;
+    width: 26px;
+    height: 26px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

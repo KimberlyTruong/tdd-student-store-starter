@@ -2,20 +2,65 @@ import * as React from "react"
 import Navbar from "../Navbar/Navbar"
 import Sidebar from "../Sidebar/Sidebar"
 import Home from "../Home/Home"
-import Search from "../Search/Search"
-import ProductDetail from "../ProductDetail/ProductDetail"
-import NotFound from "../NotFound/NotFound"
 import "./App.css"
-import {BrowserRouter, Routes, Route} from "react-router-dom"
+import Loading from "../Loading/Loading"
+import {BrowserRouter} from "react-router-dom"
 import axios from 'axios'
 
 export default function App() {
+  const [allProducts, setAllProducts] = React.useState([])
   const [products, setProducts] = React.useState([]);
   const [isFetching, setIsFetching] = React.useState(true)
   const [error, setError] = React.useState(false)
   const [isOpen, setIsOpen] = React.useState(false)
   const [shoppingCart, setShoppingCart] = React.useState([])
   const [checkoutForm, setCheckoutForm] = React.useState({name:'', email:''})
+  const [category, setCategory] = React.useState ("All Categories")
+  const [searchTerm, setSearchTerm] = React.useState('')
+
+  const handleFiltering = (newCategory=category) => {
+    if (category != newCategory){
+      if (newCategory !== "All Categories"){
+        const categoryElement = document.getElementById(newCategory.toLowerCase() + "-tag")
+        categoryElement.classList.add("category-selected")
+      }
+      else {
+        const categoryElement = document.getElementById("all-categories-tag")
+        categoryElement.classList.add("category-selected")
+      }
+
+      if (category !== "All Categories"){
+        const oldCategoryElement = document.getElementById(category.toLowerCase() + "-tag")
+        oldCategoryElement.classList.remove("category-selected")
+      }
+      else {
+        const oldCategoryElement = document.getElementById("all-categories-tag")
+        oldCategoryElement.classList.remove("category-selected")
+      }
+    }
+
+    const searchInput = document.getElementById("search-input")
+    setSearchTerm(searchInput.value)
+    setCategory(newCategory)
+
+    var filteredProducts = []
+
+    setSearchTerm(searchInput.value)
+
+    if (searchInput.value === '' && newCategory === "All Categories"){
+      setProducts(allProducts)
+      return
+    }
+
+    allProducts.forEach((product) => {
+      if (((product.name.toLowerCase().includes(searchInput.value)) || (searchInput.value === '')) && ((product.category === newCategory) || (newCategory === "All Categories"))){
+        filteredProducts.push(product)
+      }
+    })
+
+    setProducts(filteredProducts)
+  }
+
 
   const handleOnCheckoutFormChange = (name, value) => {
     const inputs = document.getElementsByClassName("checkout-form-input")
@@ -29,7 +74,6 @@ export default function App() {
   }
 
   const handleOnSubmitCheckoutForm = () => {
-    console.log("ss")
     axios.post('https://codepath-store-api.herokuapp.com/store', {
       user: {
         name: checkoutForm.name,
@@ -115,29 +159,17 @@ export default function App() {
     setShoppingCart(copyCart)
   }
 
-  // React.useEffect(() => {
-  //   fetch("https://codepath-store-api.herokuapp.com/store")
-  //     .then(res => res.json())
-  //     .then(
-  //       (result) => {
-  //         setProducts(result.products);
-  //         setIsFetching(false)
-  //       },
-  //       (error) => {
-  //         setError(error);
-  //       }
-  //     )
-  // }, [])
-
   React.useEffect (async () => {
     const res = await axios.get("https://codepath-store-api.herokuapp.com/store")
     setProducts(res.data.products);
+    setAllProducts(res.data.products)
     setIsFetching(false)
-  })
+  }, [])
 
-  if (isFetching){ // return loading page
-
-    return null
+  if (isFetching){
+    return (
+      <Loading/>
+    )
   }
 
   if (error){
@@ -152,32 +184,15 @@ export default function App() {
 
             <main>
               <div className = "left-main">
-                <Sidebar handleOnToggle={handleOnToggle} shoppingCart={shoppingCart} products={products} checkoutForm={checkoutForm} handleOnCheckoutFormChange={handleOnCheckoutFormChange} handleOnSubmitCheckoutForm={handleOnSubmitCheckoutForm}/>
+                <Sidebar allProducts={allProducts} handleOnToggle={handleOnToggle} shoppingCart={shoppingCart} checkoutForm={checkoutForm} handleOnCheckoutFormChange={handleOnCheckoutFormChange} handleOnSubmitCheckoutForm={handleOnSubmitCheckoutForm}/>
               </div>
               <div className="right-main">
                 <Navbar />
                 <div className="centered-main">
-                  <Search />
-
-                  <Routes>
-
-                    <Route  path = "/" element = {
-                      <Home products={products} handleAddItemToCart={handleAddItemToCart} handleRemoveItemToCart={handleRemoveItemToCart}/>
-                    }/>
-
-                    <Route path="/products/:productId" element={
-                      <ProductDetail shoppingCart={shoppingCart} handleAddItemToCart={handleAddItemToCart} handleRemoveItemToCart={handleRemoveItemToCart}/>
-                    }/>
-
-                    <Route path="*" element={<NotFound/>}/>
-
-               </Routes>
-
+                      <Home searchTerm={searchTerm} handleFiltering={handleFiltering} shoppingCart={shoppingCart} products={products} handleAddItemToCart={handleAddItemToCart} handleRemoveItemToCart={handleRemoveItemToCart}/>
                 </div>
               </div>
             </main>
-
-
 
         </BrowserRouter>
 

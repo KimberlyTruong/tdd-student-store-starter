@@ -2,6 +2,7 @@ i {
     font-size: 42px;
     background-color: teal;
     color: white;
+    cursor: pointer;
 }
 
 .sidebar {
@@ -9,6 +10,7 @@ i {
     height: 100%;
     width: 80px;
     position: fixed;
+    z-index: 1;
     top: 0;
     left: 0;
     overflow-x: hidden;
@@ -21,6 +23,7 @@ i {
     align-items: flex-start;
     padding: 14px;
     overflow-y: scroll;
+    border-right: solid rgba(255, 255, 255, 0.37) 4px;
   }
 
 .inputs {
@@ -45,4 +48,10 @@ i {
     display: none;
 }
 
-  /* On click just add or remove a class */
+.arrow:hover {
+    border: solid 2px teal;
+    background: -webkit-linear-gradient(#0ba360, #ffffff, #30dd8a, #f2fff9);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: all .25s ease-in-out;
+}

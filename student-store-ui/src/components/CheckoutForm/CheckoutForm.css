@@ -8,8 +8,15 @@ label {
     justify-content: space-around;
 }
 
+.checkout-form-input{
+    width: 84%;
+}
+
 .checkout-form-label{
     margin: 4px;
+    display: flex;
+    justify-content: space-between;
+    width:100%;
 }
 
 .checkout-button{

@@ -3,8 +3,8 @@ import ProductView from "../ProductView/ProductView"
 import {useParams} from "react-router-dom" //extract product id with this (from the link)
 import {useState, useEffect} from "react"
 import axios from 'axios'
-import ShoppingCart from "../ShoppingCart/shoppingCart"
 import NotFound from "../NotFound/NotFound"
+import Loading from "../Loading/Loading"
 
 export default function ProductDetail(props) {
     const [product, setProduct] = useState(null) // what do we use the state for?
@@ -13,10 +13,9 @@ export default function ProductDetail(props) {
     let {productId} = useParams()
 
     // Find the quantity of the product from shoppingCart
-
     var quantity = 0;
     props.shoppingCart.forEach((item) => {
-        if (item.itemId === productId){
+        if (item.itemId === parseInt(productId)){
             quantity = item.quantity
         }
     })
@@ -36,9 +35,7 @@ export default function ProductDetail(props) {
 
     if (product === null && !fetchErr){
         return (
-            <div className="loading">
-                <h1>Loading...</h1>
-            </div>
+            <Loading/>
         )
     }
 
@@ -54,4 +51,3 @@ export default function ProductDetail(props) {
         </div>
     )
 }
-// how do I get the quantity? Can I pass in the shopping cart?

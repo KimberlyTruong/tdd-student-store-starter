@@ -1,0 +1,33 @@
+.not-found-div {
+    display:flex;
+    width: 100%;
+    height: 20vw;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+}
+
+.fa-triangle-exclamation {
+    background: none;
+    color: teal;
+    font-size: 90px;
+    padding-bottom: 30px;
+    padding-right: 30px;
+}
+
+.fa-triangle-exclamation:hover{
+    text-shadow: 2px 2px 2px #000000;
+}
+
+.not-found {
+    margin: 0px;
+    padding: 0px;
+    font-size:7vw;
+    color: teal;
+    margin-bottom: 40px;
+
+}
+
+.not-found:hover{
+    text-shadow: 2px 2px 4px #000000;
+}

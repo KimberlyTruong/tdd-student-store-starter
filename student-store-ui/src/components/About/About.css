@@ -1,0 +1,38 @@
+#about {
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.about-container {
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.about-left {
+    padding: 30px 50px;
+    overflow: wrap;
+    flex: 4;
+}
+.about-container .codePathLogo-top{
+    font-size: 3.2vw;
+    line-height: 90%;
+}
+
+.about-container .codePathLogo-bottom {
+    font-size: 3.2vw;
+    line-height: 92%;
+}
+
+.about-container .fa-basket-shopping{
+    font-size: 4.6vw;
+}
+
+.about-right {
+    flex: 3;
+    background-color: teal;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
