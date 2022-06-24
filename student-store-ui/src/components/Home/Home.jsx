@@ -6,13 +6,14 @@ import Categories from "../Categories/Categories"
 import ProductGrid from "../ProductGrid/ProductGrid"
 import ProductDetail from "../ProductDetail/ProductDetail"
 import About from "../About/About"
+import ContactUs from "../ContactUs/ContactUs"
 import NotFound from "../NotFound/NotFound"
 
 import {Routes, Route} from "react-router-dom"
 
 export default function Home(props) {
   return (
-    <div className="home">
+    <div id="home" className="home">
       <Hero />
       <Search searchTerm={props.searchTerm} handleFiltering={props.handleFiltering}/>
       <Categories handleFiltering={props.handleFiltering}/>
@@ -23,6 +24,7 @@ export default function Home(props) {
           <>
             <ProductGrid shoppingCart={props.shoppingCart} products={props.products} handleAddItemToCart={props.handleAddItemToCart} handleRemoveItemToCart={props.handleRemoveItemToCart}/>
             <About/>
+            <ContactUs/>
           </>
         }/>
 

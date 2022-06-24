@@ -1,0 +1,14 @@
+#contact-us {
+    margin-top: 30px;
+    margin-bottom: 70px;
+}
+
+.contact-container{
+    background-color: teal;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 30px 60px;
+
+}

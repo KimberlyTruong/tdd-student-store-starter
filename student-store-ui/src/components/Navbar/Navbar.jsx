@@ -10,10 +10,10 @@ export default function Navbar() {
         <p></p>
       </div>
       <div id = "nav-titles">
-        <p className="nav-title" id="home-page">Home</p>
-        <p className="nav-title" id="about-us-page">About Us</p>
-        <p className="nav-title" id="contact-us-page">Contact Us</p>
-        <p className="nav-title" id="buy-now-page">Buy Now</p>
+        <a href={"#home"} className="nav-title" id="home-page">Home</a>
+        <a href={"#about"} className="nav-title" id="about-us-page">About Us</a>
+        <a href={"#contact-us"} className="nav-title" id="contact-us-page">Contact Us</a>
+        <a href={"#products-begin"} className="nav-title" id="buy-now-page">Buy Now</a>
       </div>
     </nav>
   )
