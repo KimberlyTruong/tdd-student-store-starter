@@ -1,8 +1,13 @@
 .fa-magnifying-glass {
     background: none;
     color: teal;
-    font-size: 20px;
-    padding: 5px 20px;
+    font-size: 22px;
+    padding: 5px 6px;
+}
+
+.fa-magnifying-glass:hover {
+    text-shadow: 2px 2px rgb(95, 95, 95);
+    transition: all .3s ease-in-out;
 }
 
 .search {
@@ -10,4 +15,16 @@
     margin-top: 40px;
     display:flex;
     justify-content: center;
+}
+
+#search-input {
+    border: none;
+    border-radius: 30px;
+    padding:6px;
+}
+
+#search-input:focus {
+    box-shadow: 4px 4px teal;
+    transition: all .6s ease-in-out;
+
 }

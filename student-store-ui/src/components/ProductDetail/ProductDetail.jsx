@@ -7,7 +7,9 @@ import NotFound from "../NotFound/NotFound"
 import Loading from "../Loading/Loading"
 
 export default function ProductDetail(props) {
-    const [product, setProduct] = useState(null) // what do we use the state for?
+    /* Renders a page when the user clicks on any product card image. (Opens to the product detail page) */
+
+    const [product, setProduct] = useState(null)
     const [fetchErr, setFetchErr] = useState(false)
 
     let {productId} = useParams()
@@ -23,7 +25,6 @@ export default function ProductDetail(props) {
     useEffect (async () => {
         const res = await axios.get(`https://codepath-store-api.herokuapp.com/store/${productId}`)
         .catch (function(error) {
-            console.log("Hello")
             setFetchErr(true)
         })
 

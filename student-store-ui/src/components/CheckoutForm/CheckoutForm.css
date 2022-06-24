@@ -49,3 +49,9 @@ label {
 .checkout-button:focus {
     outline: none;
 }
+
+.submit-error{
+    margin-top: 40px;
+    color: white;
+    font-weight: bold;
+}

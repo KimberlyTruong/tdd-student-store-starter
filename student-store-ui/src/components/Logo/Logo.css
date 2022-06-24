@@ -8,7 +8,16 @@
     display:flex;
     justify-content: row;
     align-items: center;
-    background-color: teal;
+}
+
+.logo-image:hover {
+	transform: rotateY(360deg);
+	animation: rotateAnimation 3s linear infinite;
+}
+
+@keyframes rotateAnimation {
+	from {transform: rotateY(0deg);}
+	to {transform: rotateY(360deg);}
 }
 
 .codePathLogo-top {
@@ -31,4 +40,5 @@
 .fa-basket-shopping{
     font-size:22px;
     margin-left: 5px;
+    background-color: transparent;
 }

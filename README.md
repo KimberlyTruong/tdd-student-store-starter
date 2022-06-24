@@ -4,22 +4,25 @@
 
 Selling merchandise in the modern era requires digital solutions. For this project, you'll be tasked with designing and constructing an online student store for the College of Codepath. The application entails a frontend user interface for potential customers to peruse the goods, and a backend API to handle data management. The API will be built with Node and Express and the UI will be built with React.
 
-// Include your gif here
+<!DOCTYPE html><img src = "./demos/first.gif" type = "gif" class = "gif"></html>
+<!DOCTYPE html><img src = "./demos/second.gif" type = "gif" class = "gif"></html>
+<!DOCTYPE html><img src = "./demos/third.gif" type = "gif" class = "gif"></html>
+
 
 ### Application Features
 
 #### Core Features
 
-- [ ] Displays the following sections: header, banner, search, product grid, about, contact, and footer.
+- [x] Displays the following sections: header, banner, search, product grid, about, contact, and footer.
 - [x] On initial page load, display the products at the [GET /store endpoint](https://codepath-store-api.herokuapp.com/store).
-- [ ] User can click on the categories (Clothing, food, etc) to filter the product grid by type.
-- [ ] User can search for products.
+- [x] User can click on the categories (Clothing, food, etc) to filter the product grid by type.
+- [x] User can search for products.
 - [x] User can click on a product in the grid to view additional product details. Navigation is via a React Router.
 - [x] User can click to expand the shopping cart in the left navigation.
 - [x] User can click the '+' button on a product cart to increment that product in the shopping cart.
 - [x] User can click the '-' button on a product cart to increment that product in the shopping cart.
 - [x] Shopping cart displays a table of products, quantities, subtotal, tax, and total.
-- [ ] User can check out, and can view receipt upon completion.
+- [x] User can check out, and can view receipt upon completion.
 
 #### Stretch Features
 
@@ -117,9 +120,9 @@ The following specifications were met on the Express backend and the React front
 
 **Hero.jsx**
 
-  - [ ] Should render JSX that is wrapped by a `div` element with a `className` of `hero`
-  - [ ] Should display an intro message inside an element with the `className` of `intro`. That message should contain the text `"Welcome!"` somewhere within it.
-  - [ ] Should render a hero image inside an `img` tag with the `className` of `hero-img`.
+  - [x] Should render JSX that is wrapped by a `div` element with a `className` of `hero`
+  - [x] Should display an intro message inside an element with the `className` of `intro`. That message should contain the text `"Welcome!"` somewhere within it.
+  - [x] Should render a hero image inside an `img` tag with the `className` of `hero-img`.
 
 **ProductGrid.jsx**
 
@@ -235,11 +238,11 @@ The following specifications were met on the Express backend and the React front
   - [x] Should render a `button` element with the `className` of `checkout-button`.
     - [x] It should contain the text `Checkout`.
     - [x] When clicked, it should call the `handleOnSubmit` function.
-      - [ ] If that request fails, the `CheckoutForm` component should display an error message inside an element with the `className` of `error`.
-      - [ ] If the `POST` request is successful...
-        - [ ] The `CheckoutForm` component should display a success message that contains the text `"Success!"` inside an element with the `className` of `success`.
-        - [ ] The `shoppingCart` should be emptied
-        - [ ] The `checkoutForm` should be reset to its default state.
+      - [x] If that request fails, the `CheckoutForm` component should display an error message inside an element with the `className` of `error`.
+      - [x] If the `POST` request is successful...
+        - [x] The `CheckoutForm` component should display a success message that contains the text `"Success!"` inside an element with the `className` of `success`.
+        - [x] The `shoppingCart` should be emptied
+        - [x] The `checkoutForm` should be reset to its default state.
 
 **Server** - Create an Express server
   - [ ] Wire up the appropriate middleware and error handlers in the `app.js` file
@@ -285,20 +288,20 @@ The following specifications were met on the Express backend and the React front
 
 * Did the topics discussed in your labs prepare you to complete the assignment? Be specific, which features in your weekly assignment did you feel unprepared to complete?
 
-Add your response here
+Not entirely. This project required a lot of experimenting beyond the labs. For example, in the labs we only had to filter by categories (not search). Although we did implement a search last week, it was a lot more difficult searching on filtered categories. API calls also weren't really covered in detail during the labs.
 
 * If you had more time, what would you have done differently? Would you have added additional features? Changed the way your project responded to a particular event, etc.
 
-Add your response here
+I had enough time to do everything. I would just spend more time making my website look better with css.
 
 * Reflect on your project demo, what went well? Were there things that maybe didn't go as planned? Did you notice something that your peer did that you would like to try next time?
 
-Add your response here
+Everything went well.
 
 ### Open-source libraries used
 
-- Add any links to open-source libraries used in your project.
+Axios
 
 ### Shout out
 
-Give a shout out to somebody from your cohort that especially helped you during your project. This can be a fellow peer, instructor, TA, mentor, etc.
+Vincent (TA), Sravani, and Hannah were all very very helpful throughout this project!

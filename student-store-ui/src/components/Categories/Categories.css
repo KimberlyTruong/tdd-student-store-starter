@@ -21,7 +21,7 @@
     left: 0;
     background-color: teal;
     transform-origin: bottom right;
-    transition: transform 0.25s ease-out;
+    transition: transform 0.32s ease-out;
   }
 
   .product-category:hover:after {

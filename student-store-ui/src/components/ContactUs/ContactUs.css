@@ -1,14 +1,32 @@
 #contact-us {
     margin-top: 30px;
     margin-bottom: 70px;
+    overflow: wrap;
 }
 
 .contact-container{
     background-color: teal;
     color: white;
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
     width: 100%;
-    padding: 30px 60px;
+    overflow: hidden;
+}
 
+.contact-left {
+    padding: 30px 60px;
+    width: 40%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.contact-column{
+    overflow: wrap;
+}
+
+.contact-container img {
+    width: 56%;
+    padding: 10px 30px;
+    filter: brightness(0) invert(100%);
 }

@@ -1,10 +1,13 @@
 import "./shoppingCart.css"
 
 export default function ShoppingCart(props) {
+    /* Displays the shopping cart in the sidebar and computes the subtotal and total. */
+    
     var subtotal = 0
     const tax = 0.0875
 
     if (props.shoppingCart.length === 0){
+        /* Shopping cart is empty. */
         return (
             <div className="notification">No items added to cart yet. Start shopping now!</div>
         )
@@ -13,7 +16,8 @@ export default function ShoppingCart(props) {
     return (
         <div className="shopping-cart">
             {props.shoppingCart.map((item) => {
-                // get item name (shopping cart will only give item.id and item. quantity)
+                /* Get the itemId from the shopping cart and then find the matching id in products.
+                 * This will give all product information including price. */
                 const foundItem = props.products.find((ele) => ele.id === item.itemId)
                 subtotal += foundItem.price * item.quantity
 

@@ -15,7 +15,7 @@ export default function Sidebar(props) {
         <h2 className="open-sidebar-element hidden">Shopping Cart</h2>
         <ShoppingCart isOpen={props.isOpen} products={props.allProducts} shoppingCart={props.shoppingCart}/>
         <h2 className="open-sidebar-element hidden">Checkout</h2>
-        <CheckoutForm isOpen={props.isOpen} shoppingCart={props.shoppingCart} checkoutForm={props.checkoutForm}  handleOnCheckoutFormChange={props.handleOnCheckoutFormChange} handleOnSubmitCheckoutForm={props.handleOnSubmitCheckoutForm}/>
+        <CheckoutForm submitError={props.submitError} recieptMessage={props.recieptMessage} isOpen={props.isOpen} shoppingCart={props.shoppingCart} checkoutForm={props.checkoutForm}  handleOnCheckoutFormChange={props.handleOnCheckoutFormChange} handleOnSubmitCheckoutForm={props.handleOnSubmitCheckoutForm}/>
       </div>
     </section>
   )

@@ -4,3 +4,7 @@
     flex-direction: row;
     flex-wrap: wrap;
 }
+
+.no-items-found {
+    font-size:1.6vw;
+}

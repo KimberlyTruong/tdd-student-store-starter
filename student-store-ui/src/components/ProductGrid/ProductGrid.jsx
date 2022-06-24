@@ -2,6 +2,16 @@ import "./ProductGrid.css"
 import ProductCard from "../ProductCard/ProductCard"
 
 export default function ProductGrid(props) {
+  /* Displays all the products in home. */
+
+  /* If there are no products after filtering, show this. */
+    if (props.products.length === 0){
+      return (
+        <div className="product-grid">
+          <p className="no-items-found">No items found...</p>
+        </div>
+      )
+    }
 
     return (
       <div className="product-grid">

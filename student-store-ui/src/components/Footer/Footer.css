@@ -1,0 +1,32 @@
+#footer {
+    width: 100%;
+    padding: 30px;
+    padding-top: 10px;
+}
+
+#footer hr {
+    margin: 0px;
+    padding: 0px;
+}
+
+#footer h4 {
+    padding-bottom: 6px;
+    margin-bottom: 2px;
+}
+
+.footer-text-container {
+    padding-top: 0px;
+    margin-top: 0px;
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+    overflow: wrap;
+}
+
+#footer a {
+    display: block;
+    padding: 6px 0px;
+    cursor: pointer;
+    text-decoration: none;
+    color: black;
+}

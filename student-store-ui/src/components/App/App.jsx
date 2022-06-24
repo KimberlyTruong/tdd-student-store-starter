@@ -4,21 +4,29 @@ import Sidebar from "../Sidebar/Sidebar"
 import Home from "../Home/Home"
 import "./App.css"
 import Loading from "../Loading/Loading"
+import Footer from "../Footer/Footer"
+import NotFound from "../NotFound/NotFound"
 import {BrowserRouter} from "react-router-dom"
 import axios from 'axios'
 
 export default function App() {
-  const [allProducts, setAllProducts] = React.useState([])
-  const [products, setProducts] = React.useState([]);
-  const [isFetching, setIsFetching] = React.useState(true)
-  const [error, setError] = React.useState(false)
-  const [isOpen, setIsOpen] = React.useState(false)
-  const [shoppingCart, setShoppingCart] = React.useState([])
-  const [checkoutForm, setCheckoutForm] = React.useState({name:'', email:''})
+  /* Use states */
+  const [allProducts, setAllProducts] = React.useState([]) // saves all products
+  const [products, setProducts] = React.useState([]); // saves currrent products being viewed
+  const [isFetching, setIsFetching] = React.useState(true) //  boolean. Determines if the products is still being fetched
+  const [error, setError] = React.useState(false) // boolean. API call error
+  const [isOpen, setIsOpen] = React.useState(false) // boolean. state of the sidebar toggle button
+  const [shoppingCart, setShoppingCart] = React.useState([]) // array of objects (with attributes itemId and quantity)
+  const [checkoutForm, setCheckoutForm] = React.useState({name:'', email:''}) // object (with attributes name and email)
   const [category, setCategory] = React.useState ("All Categories")
   const [searchTerm, setSearchTerm] = React.useState('')
+  const [recieptMessage, setRecieptMessage] = React.useState('')
+  const [submitError, setSubmitError] = React.useState('') // string. the error recieved when pressing the checkout button. There is no error if it's empty.
 
   const handleFiltering = (newCategory=category) => {
+    /* Filter products by category and searchTerm */
+    /* There's a new category. Update it */
+
     if (category != newCategory){
       if (newCategory !== "All Categories"){
         const categoryElement = document.getElementById(newCategory.toLowerCase() + "-tag")
@@ -39,6 +47,7 @@ export default function App() {
       }
     }
 
+    /* Get the current search term */
     const searchInput = document.getElementById("search-input")
     setSearchTerm(searchInput.value)
     setCategory(newCategory)
@@ -47,11 +56,13 @@ export default function App() {
 
     setSearchTerm(searchInput.value)
 
+    /* If there are no filters, then just set products to all products */
     if (searchInput.value === '' && newCategory === "All Categories"){
       setProducts(allProducts)
       return
     }
 
+    /* Filter by checking all the products. */
     allProducts.forEach((product) => {
       if (((product.name.toLowerCase().includes(searchInput.value)) || (searchInput.value === '')) && ((product.category === newCategory) || (newCategory === "All Categories"))){
         filteredProducts.push(product)
@@ -63,7 +74,11 @@ export default function App() {
 
 
   const handleOnCheckoutFormChange = (name, value) => {
+    /* Update the checkout form */
     const inputs = document.getElementsByClassName("checkout-form-input")
+
+    setSubmitError('') // Remove any submit errors.
+    setRecieptMessage('')
 
     if (name === "name"){
       setCheckoutForm({name:inputs[name].value, email:checkoutForm.email})
@@ -71,9 +86,21 @@ export default function App() {
     else if (name === "email"){
       setCheckoutForm({name:checkoutForm.name, email:inputs[name].value})
     }
+
   }
 
   const handleOnSubmitCheckoutForm = () => {
+    /* Post the user's purchase to the store. */
+    /* Check if there are any errors. */
+    if (checkoutForm.name === '' || checkoutForm.email === ''){
+      setSubmitError("Error! Please input your name and email.")
+      return
+    }
+    if (shoppingCart.length === 0){
+      setSubmitError("Error! Your shopping cart is empty.")
+      return
+    }
+
     axios.post('https://codepath-store-api.herokuapp.com/store', {
       user: {
         name: checkoutForm.name,
@@ -82,21 +109,20 @@ export default function App() {
       shoppingCart: shoppingCart
     })
     .then(function (response) {
-      console.log(response);
+      setRecieptMessage("Success! " + response.data.purchase.receipt.lines.join('\n'))
     })
     .catch(function (error) {
       console.log(error);
       setError(true)
+      setRecieptMessage("ERROR!")
     });
-
-    // Clear the inputs
-    // make it so we can't submit without required fields and more than one item
 
     setCheckoutForm({name:'', email: ''})
     setShoppingCart([])
   }
 
   const handleOnToggle = (event) => {
+    /* Handle toggling the sidebar button. (Open and close the sidebar) */
     const hiddenElements = document.getElementsByClassName('open-sidebar-element')
     let button = event.currentTarget
 
@@ -125,6 +151,7 @@ export default function App() {
   const handleAddItemToCart = (itemId) =>
   {
     var copyCart = [...shoppingCart]
+    setSubmitError(false)
 
     var itemFound = false;
     copyCart.forEach((item) => {
@@ -160,6 +187,7 @@ export default function App() {
   }
 
   React.useEffect (async () => {
+    /* Get all products from the store. */
     const res = await axios.get("https://codepath-store-api.herokuapp.com/store")
     setProducts(res.data.products);
     setAllProducts(res.data.products)
@@ -174,7 +202,7 @@ export default function App() {
 
   if (error){
     return (
-      <div></div>
+      <NotFound/>
     )
   }
 
@@ -184,20 +212,18 @@ export default function App() {
 
             <main>
               <div className = "left-main">
-                <Sidebar allProducts={allProducts} handleOnToggle={handleOnToggle} shoppingCart={shoppingCart} checkoutForm={checkoutForm} handleOnCheckoutFormChange={handleOnCheckoutFormChange} handleOnSubmitCheckoutForm={handleOnSubmitCheckoutForm}/>
+                <Sidebar submitError={submitError} allProducts={allProducts} handleOnToggle={handleOnToggle} shoppingCart={shoppingCart} recieptMessage={recieptMessage} checkoutForm={checkoutForm} handleOnCheckoutFormChange={handleOnCheckoutFormChange} handleOnSubmitCheckoutForm={handleOnSubmitCheckoutForm}/>
               </div>
               <div className="right-main">
                 <Navbar />
                 <div className="centered-main">
                       <Home searchTerm={searchTerm} handleFiltering={handleFiltering} shoppingCart={shoppingCart} products={products} handleAddItemToCart={handleAddItemToCart} handleRemoveItemToCart={handleRemoveItemToCart}/>
                 </div>
+                <Footer handleFiltering={handleFiltering}/>
               </div>
             </main>
-
         </BrowserRouter>
 
       </div>
   )
 }
-
- // make a footer!!!

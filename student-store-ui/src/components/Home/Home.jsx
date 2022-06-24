@@ -35,6 +35,7 @@ export default function Home(props) {
         <Route path="*" element={<NotFound/>}/>
 
       </Routes>
+
     </div>
   )
 }
