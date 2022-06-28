@@ -9,6 +9,8 @@ import NotFound from "../NotFound/NotFound"
 import {BrowserRouter} from "react-router-dom"
 import axios from 'axios'
 
+const PORT = 3001
+
 export default function App() {
   /* Use states */
   const [allProducts, setAllProducts] = React.useState([]) // saves all products
@@ -101,7 +103,7 @@ export default function App() {
       return
     }
 
-    axios.post('https://codepath-store-api.herokuapp.com/store', {
+    axios.post(`http://localhost:${PORT}/store`, {
       user: {
         name: checkoutForm.name,
         email: checkoutForm.email
@@ -109,10 +111,9 @@ export default function App() {
       shoppingCart: shoppingCart
     })
     .then(function (response) {
-      setRecieptMessage("Success! " + response.data.purchase.receipt.lines.join('\n'))
+      setRecieptMessage(response.data.purchase.receipt) // this is an array of strings.
     })
     .catch(function (error) {
-      console.log(error);
       setError(true)
       setRecieptMessage("ERROR!")
     });
@@ -188,7 +189,8 @@ export default function App() {
 
   React.useEffect (async () => {
     /* Get all products from the store. */
-    const res = await axios.get("https://codepath-store-api.herokuapp.com/store")
+    // const res = await axios.get("https://codepath-store-api.herokuapp.com/store")
+    const res = await axios.get(`http://localhost:${PORT}/store`)
     setProducts(res.data.products);
     setAllProducts(res.data.products)
     setIsFetching(false)

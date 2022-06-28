@@ -6,6 +6,8 @@ import axios from 'axios'
 import NotFound from "../NotFound/NotFound"
 import Loading from "../Loading/Loading"
 
+const PORT = 3001
+
 export default function ProductDetail(props) {
     /* Renders a page when the user clicks on any product card image. (Opens to the product detail page) */
 
@@ -23,7 +25,8 @@ export default function ProductDetail(props) {
     })
 
     useEffect (async () => {
-        const res = await axios.get(`https://codepath-store-api.herokuapp.com/store/${productId}`)
+        // const res = await axios.get(`https://codepath-store-api.herokuapp.com/store/${productId}`)
+        const res = await axios.get(`http://localhost:${PORT}/store/${productId}`)
         .catch (function(error) {
             setFetchErr(true)
         })
