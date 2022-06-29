@@ -10,6 +10,13 @@ Selling merchandise in the modern era requires digital solutions. For this proje
 
 ![Uploading third.gif…]()
 
+![ezgif com-gif-maker (1)](https://user-images.githubusercontent.com/59032456/176512943-3fc16dd4-06b4-4d11-b6d3-32bf6cf882b1.gif)
+
+![ezgif com-gif-maker](https://user-images.githubusercontent.com/59032456/176512956-381a2998-8c46-41a5-9024-6ad974c3ebc6.gif)
+
+![ezgif com-gif-maker (2)](https://user-images.githubusercontent.com/59032456/176513008-11bf7294-87e1-4e70-80a7-5c4a144b2a98.gif)
+
+
 ### Application Features
 
 #### Core Features
