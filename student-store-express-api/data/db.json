@@ -341,28 +341,6 @@
                 "1 Cinnamon Rolls purchases at a cost of $2.99.",
                 "Before taxes, the subtotal was $4.49 After taxes and fees were applied, the total comes out to $4.88"
             ]
-        },
-        {
-            "id": 8,
-            "name": "Kimberly",
-            "email": "something@fb.com",
-            "order": [
-                {
-                    "itemId": 2,
-                    "quantity": 2
-                },
-                {
-                    "itemId": 3
-                }
-            ],
-            "total": "4.88",
-            "createdAt": "6/28/2022 12:10:17 PM",
-            "receipt": [
-                "Success! Showing receipt for Kimberly available at something@fb.com:",
-                "2 Flamin Hot Cheetos purchases at a cost of $3.00.",
-                "undefined Cinnamon Rolls purchases at a cost of $NaN.",
-                "Before taxes, the subtotal was $4.49 After taxes and fees were applied, the total comes out to $4.88"
-            ]
         }
     ]
 }

@@ -8,6 +8,7 @@ import ProductDetail from "../ProductDetail/ProductDetail"
 import About from "../About/About"
 import ContactUs from "../ContactUs/ContactUs"
 import NotFound from "../NotFound/NotFound"
+import Purchases from "../Purchases/purchases"
 
 import {Routes, Route} from "react-router-dom"
 
@@ -31,6 +32,10 @@ export default function Home(props) {
         <Route path="/products/:productId" element={
           <ProductDetail shoppingCart={props.shoppingCart} handleAddItemToCart={props.handleAddItemToCart} handleRemoveItemToCart={props.handleRemoveItemToCart}/>
         }/>
+
+        {/* <Route path="/purchases" element={
+          <Purchases />
+        } /> */}
 
         <Route path="*" element={<NotFound/>}/>
 
